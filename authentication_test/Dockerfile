@@ -5,6 +5,8 @@ WORKDIR /app
 COPY authentication_test.py /app/authentication_test.py
 
 # Install required Python libraries
+RUN apt-get update && apt-get install -y python3 python3-pip
+
 RUN pip3 install --no-cache-dir requests
 
 # EXPOSE 8000
