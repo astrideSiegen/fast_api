@@ -1,8 +1,9 @@
 import os
 import requests
 
+
 # définition de l'adresse de l'API
-api_address = 'localhost' 
+api_address = 'authentication' 
 # port de l'API
 api_port = 8000
 
@@ -51,6 +52,7 @@ for credential in credentials:
 
    ==> {result}
    """
+ 
 
     print(output)
 
@@ -59,6 +61,7 @@ for credential in credentials:
 if os.environ.get('LOG') == 1:
     with open('api_test.log', 'a') as file:
         file.write(output)
+        print('Hello Heloo')
 
 #################################################
 

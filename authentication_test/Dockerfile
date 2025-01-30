@@ -1,16 +1,15 @@
-FROM python:3.9
-
-
-ADD authentication_test.py  /app/authentication_test.py 
+FROM ubuntu:18.04 AS BUILD_IMAGE
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install python3-pip -y 
-RUN pip install iPython 
-RUN pip install requests
-RUN pip install os
+COPY authentication_test.py /app/authentication_test.py
 
-EXPOSE 8000
+# Install required Python libraries
+RUN pip3 install --no-cache-dir requests
 
-# ENV LOG=1
-CMD ["iPython ", "authentication_test.py", "--host", "0.0.0.0", "--port", "8000" ] 
+# EXPOSE 8000
+
+# Set the environment variable for logging (optional)
+ENV LOG=1
+
+CMD ["python3", "authentication_test.py"] 
