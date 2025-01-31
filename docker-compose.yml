@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+  fastapi:
+    image: datascientest/fastapi:1.0.0
+    container_name: container_fastapi
+    ports:
+      - "8000:8000"
+    networks:
+      - myNetwork_from_fast_api
+
+  authentication_test:
+    image: docker_authentication:latest
+    container_name: authentication
+    depends_on:
+      - fastapi
+    build:
+      context: ./authentication
+    networks:
+      - myNetwork_from_fast_api
+    environment:
+      - LOG=1
+    volumes:
+      - logs:/app/logs
+
+  authorization_test:
+    image: docker_authorization:latest
+    container_name: authorization
+    depends_on:
+      - fastapi
+    build:
+      context: ./authorization_test
+    networks:
+      - myNetwork_from_fast_api
+    environment:
+      - LOG=1
+    volumes:
+      - logs:/app/logs
+
+  content_test:
+    image: docker_content:latest
+    container_name: content
+    depends_on:
+      - fastapi
+    networks:
+      - myNetwork_from_fast_api
+    environment:
+      - LOG=1
+    volumes:
+      - logs:/app/logs
+
+networks:
+  myNetwork_from_fast_api:

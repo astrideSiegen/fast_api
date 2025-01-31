@@ -3,7 +3,7 @@ import requests
 
 
 # définition de l'adresse de l'API
-api_address = 'authentication' 
+api_address = '127.0.0.1' 
 # port de l'API
 api_port = 8000
 
