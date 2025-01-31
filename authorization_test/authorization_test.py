@@ -1,8 +1,8 @@
 import os
 import requests
 
-# définition de l'adresse de l'API
-api_address = '127.0.0.1' 
+# définition de fast_api'adresse de l'API, avec le nom du container 
+api_address = 'test_fast_api_container' 
 # port de l'API
 api_port = 8000
 

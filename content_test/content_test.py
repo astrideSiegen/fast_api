@@ -1,8 +1,9 @@
 import os
 import requests
 
-# définition de l'adresse de l'API
-api_address = 'localhost' 
+# définition de l'adresse de l'API 
+#définition de fast_api'adresse de l'API, avec le service du docker-compose.yml 
+api_address = 'fast_api' 
 # port de l'API
 api_port = 8000
 

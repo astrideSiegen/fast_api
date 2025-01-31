@@ -1,9 +1,9 @@
 version: "3.9"
 
 services:
-  fastapi:
+  fast_api:
     image: datascientest/fastapi:1.0.0
-    container_name: container_fastapi
+    container_name: test_fast_api_container
     ports:
       - "8000:8000"
     networks:
@@ -11,11 +11,12 @@ services:
 
   authentication_test:
     image: docker_authentication:latest
-    container_name: authentication
+    container_name: test_authentication
     depends_on:
-      - fastapi
+      - fast_api
+    #référencer chaque Dockerfile en spécifiant le chemin du contexte de build
     build:
-      context: ./authentication
+      context: ./authentication_test
     networks:
       - myNetwork_from_fast_api
     environment:
@@ -25,9 +26,9 @@ services:
 
   authorization_test:
     image: docker_authorization:latest
-    container_name: authorization
+    container_name: test_authorization
     depends_on:
-      - fastapi
+      - fast_api
     build:
       context: ./authorization_test
     networks:
@@ -39,9 +40,12 @@ services:
 
   content_test:
     image: docker_content:latest
-    container_name: content
+    container_name: test_content
     depends_on:
-      - fastapi
+      - fast_api
+    #référencer chaque Dockerfile en spécifiant le chemin du contexte de build
+    build:
+      context: ./content_test
     networks:
       - myNetwork_from_fast_api
     environment:
@@ -49,5 +53,10 @@ services:
     volumes:
       - logs:/app/logs
 
+volumes:
+  logs:
+
+
 networks:
   myNetwork_from_fast_api:
+    driver: bridge
