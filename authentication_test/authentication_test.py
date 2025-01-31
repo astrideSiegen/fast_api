@@ -3,7 +3,8 @@ import requests
 
 
 # définition de l'adresse de l'API
-api_address = '127.0.0.1' 
+# add fast_api service name from docker-compose.yml
+api_address = 'fast_api' 
 # port de l'API
 api_port = 8000
 
@@ -60,8 +61,7 @@ for credential in credentials:
 #impression dans un fichier
 if os.environ.get('LOG') == 1:
     with open('api_test.log', 'a') as file:
-        file.write(output)
-        print('Hello Heloo')
+        file.write(output)     
 
 #################################################
 
