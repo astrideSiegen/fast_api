@@ -16,7 +16,7 @@ services:
       - fast_api
     #référencer chaque Dockerfile en spécifiant le chemin du contexte de build
     build:
-      context: /home/ubuntu/examYoudomDocker/authentication_test
+      context: ./authentication_test
     networks:
       - myNetwork_from_fast_api
     environment:
@@ -30,7 +30,7 @@ services:
     depends_on:
       - fast_api
     build:
-      context: /home/ubuntu/examYoudomDocker/authorization_test
+      context: ./authorization_test
     networks:
       - myNetwork_from_fast_api
     environment:
@@ -45,7 +45,7 @@ services:
       - fast_api
     #référencer chaque Dockerfile en spécifiant le chemin du contexte de build
     build:
-      context: /home/ubuntu/examYoudomDocker/content_test
+      context: ./content_test
     networks:
       - myNetwork_from_fast_api
     environment:
