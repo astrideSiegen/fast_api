@@ -15,7 +15,7 @@ RUN pip3 install --no-cache-dir requests
 
 # EXPOSE 8000
 
-# Set the environment variable for logging (optional)
+# Set the environment variable for log 
 ENV LOG=1
 
 CMD ["python3", "authentication_test.py"] 

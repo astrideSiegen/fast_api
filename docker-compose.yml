@@ -16,13 +16,13 @@ services:
       - fast_api
     #référencer chaque Dockerfile en spécifiant le chemin du contexte de build
     build:
-      context: ./authentication_test
+      context: /home/ubuntu/examYoudomDocker/authentication_test
     networks:
       - myNetwork_from_fast_api
     environment:
       - LOG=1
     volumes:
-      - logs:/app/logs
+      - .logs:/app/logs
 
   authorization_test:
     image: docker_authorization:latest
@@ -30,13 +30,13 @@ services:
     depends_on:
       - fast_api
     build:
-      context: ./authorization_test
+      context: /home/ubuntu/examYoudomDocker/authorization_test
     networks:
       - myNetwork_from_fast_api
     environment:
       - LOG=1
     volumes:
-      - logs:/app/logs
+      - .logs:/app/logs
 
   content_test:
     image: docker_content:latest
@@ -45,17 +45,17 @@ services:
       - fast_api
     #référencer chaque Dockerfile en spécifiant le chemin du contexte de build
     build:
-      context: ./content_test
+      context: /home/ubuntu/examYoudomDocker/content_test
     networks:
       - myNetwork_from_fast_api
     environment:
       - LOG=1
     volumes:
-      - logs:/app/logs
+      - .logs:/app/logs
 
-volumes:
-  logs:
-
+# volumes:
+#   logs:
+#     driver: local
 
 networks:
   myNetwork_from_fast_api:

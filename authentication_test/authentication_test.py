@@ -57,11 +57,14 @@ for credential in credentials:
 
     print(output)
 
+print('Hurra!!!!') 
 
 #impression dans un fichier
+
 if os.environ.get('LOG') == 1:
     with open('api_test.log', 'a') as file:
-        file.write(output)     
+        file.write(str(output) + "\n")   
+        print('Hurra2!!!!')  
 
 #################################################
 
