@@ -8,9 +8,11 @@ docker-compose down
 
 # Construire les images Docker
 echo "Construction des images Docker..."
+docker build -t docker_base:latest  ./base
 docker build -t docker_authentication:latest  ./authentication_test
 docker build -t docker_authorization:latest  ./authorization_test
 docker build -t docker_content:latest  ./content_test
+
 
 # Démarrer les conteneurs avec Docker Compose
 echo "Démarrage des conteneurs..."

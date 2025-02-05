@@ -53,6 +53,10 @@ for value in values:
    """
 
     print(output)
+        # impression dans un fichier
+    if os.environ.get('LOG') == '1':
+        with open('/app/logs/api_test.log', 'a') as file:
+            file.write(output)
 
 
 
@@ -100,7 +104,7 @@ for value in values:
 
 
 
-# impression dans un fichier
-if os.environ.get('LOG') == 1:
-    with open('api_test.log', 'a') as file:
-        file.write(output)
+    # impression dans un fichier
+    if os.environ.get('LOG') == '1':
+        with open('/app/logs/api_test.log', 'a') as file:
+            file.write(output)

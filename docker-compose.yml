@@ -3,7 +3,7 @@ version: "3.9"
 services:
   fast_api:
     image: datascientest/fastapi:1.0.0
-    container_name: test_fast_api_container
+    container_name: fast_api_container
     ports:
       - "8000:8000"
     networks:
@@ -22,7 +22,7 @@ services:
     environment:
       - LOG=1
     volumes:
-      - .logs:/app/logs
+      - logs:/app/logs
 
   authorization_test:
     image: docker_authorization:latest
@@ -36,7 +36,7 @@ services:
     environment:
       - LOG=1
     volumes:
-      - .logs:/app/logs
+      - logs:/app/logs
 
   content_test:
     image: docker_content:latest
@@ -51,11 +51,11 @@ services:
     environment:
       - LOG=1
     volumes:
-      - .logs:/app/logs
+      - logs:/app/logs
 
-# volumes:
-#   logs:
-#     driver: local
+volumes:
+  logs:
+    driver: local
 
 networks:
   myNetwork_from_fast_api:
